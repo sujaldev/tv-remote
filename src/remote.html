@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --remote-ratio: 80%;
+            --ring-size: 150px;
+            --button-color: rgb(27, 27, 27)
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* MAIN BODY */
+        .remote {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 95%;
+            padding-left: var(--remote-ratio);
+            background-color: #4c4c54;
+            border-radius: 50px;
+        }
+
+        .remote-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            grid-template-columns: 5% 20% auto;
+            grid-template-rows: 40% 20% 10% auto;
+            grid-template-areas:
+                "platform platform platform"
+                "platform platform platform"
+                "media media media"
+                "space extras ring";
+        }
+
+        /* PLATFORMS */
+        .platform-wrapper {
+            grid-area: platform;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+        }
+
+        .platform {
+            padding: 10px 20px 10px 20px;
+            border-radius: 20px;
+            background: var(--button-color);
+            margin-top: 20px;
+
+            min-width: 150px;
+            max-width: 155px;
+
+            text-align: center;
+
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .platform svg {
+            width: 80%;
+            max-height: 20px;
+        }
+
+
+        /* STANDARD BUTTONS */
+        .standard-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px;
+            margin: 5px;
+            border-radius: 50%;
+
+            font-size: 25px;
+            color: white;
+            background: var(--button-color);
+
+            opacity: 0.5;
+
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .standard-btn:hover {
+            transition: ease 0.25s;
+            opacity: 1;
+        }
+
+        /* MEDIA BUTTONS */
+        .media-wrapper {
+            grid-area: media;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /* EXTRA BUTTONS */
+        .extras-wrapper {
+            grid-area: extras;
+            display: inline-flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /* NAVIGATION BUTTONS */
+        .ring {
+            grid-area: ring;
+            display: inline-grid;
+            grid-template-columns: 33.33% 33.33% 33.33%;
+            width: var(--ring-size);
+            height: var(--ring-size);
+            background-color: var(--button-color);
+            border-radius: 50%;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 900;
+            font-size: 30px;
+            color: white;
+
+            opacity: 0.5;
+
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            transition: ease 0.25s;
+            opacity: 1;
+        }
+    </style>
+    <title>TV remote</title>
+</head>
+
+<body>
+
+    <!-- MAIN  REMOTE -->
+    <main id="remote" class="remote">
+
+        <!-- REMOTE WRAPPER -->
+        <div class="remote-wrapper">
+
+            <!-- PLATFORM LIST -->
+            <div class="platform-wrapper">
+                <div id="youtube" class="platform">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        id="Layer_1" x="0px" y="0px" style="enable-background:new 0 0 450 0;" xml:space="preserve"
+                        viewBox="84.6 85.1 380.9 84.8">
+                        <style type="text/css">
+                            .st0 {
+                                fill: #EE3124;
+                            }
+
+                            .st1 {
+                                fill: #FFFFFF;
+                            }
+
+                            .st2 {
+                                fill: #FFFFFF;
+                            }
+                        </style>
+                        <g>
+                            <g>
+                                <path class="st0"
+                                    d="M203.5,98.3c-1.4-5.2-5.5-9.3-10.7-10.7c-9.5-2.5-47.5-2.5-47.5-2.5s-38,0-47.5,2.5    c-5.2,1.4-9.3,5.5-10.7,10.7c-2.5,9.5-2.5,29.2-2.5,29.2s0,19.8,2.5,29.2c1.4,5.2,5.5,9.3,10.7,10.7c9.5,2.5,47.5,2.5,47.5,2.5    s38,0,47.5-2.5c5.2-1.4,9.3-5.5,10.7-10.7c2.5-9.5,2.5-29.2,2.5-29.2S206,107.8,203.5,98.3z" />
+                                <polygon class="st1" points="133.1,145.8 164.7,127.6 133.1,109.3   " />
+                            </g>
+                            <g>
+                                <path class="st2"
+                                    d="M260.9,162.4c-2.4-1.6-4.1-4.1-5.1-7.6c-1-3.4-1.5-8-1.5-13.6v-7.7c0-5.7,0.6-10.3,1.7-13.8    c1.2-3.5,3-6,5.4-7.6c2.5-1.6,5.7-2.4,9.7-2.4c3.9,0,7.1,0.8,9.5,2.4c2.4,1.6,4.1,4.2,5.2,7.6c1.1,3.4,1.7,8,1.7,13.8v7.7    c0,5.7-0.5,10.2-1.6,13.7c-1.1,3.4-2.8,6-5.2,7.6c-2.4,1.6-5.7,2.4-9.8,2.4C266.6,164.8,263.3,164,260.9,162.4z M274.4,154.1    c0.7-1.7,1-4.6,1-8.5V129c0-3.8-0.3-6.6-1-8.4c-0.7-1.8-1.8-2.6-3.5-2.6c-1.6,0-2.8,0.9-3.4,2.6c-0.7,1.8-1,4.6-1,8.4v16.6    c0,3.9,0.3,6.8,1,8.5c0.6,1.7,1.8,2.6,3.5,2.6C272.5,156.7,273.7,155.8,274.4,154.1z" />
+                                <path class="st2"
+                                    d="M445.4,141.3v2.7c0,3.4,0.1,6,0.3,7.7c0.2,1.7,0.6,3,1.3,3.7c0.6,0.8,1.6,1.2,3,1.2c1.8,0,3-0.7,3.7-2.1    c0.7-1.4,1-3.7,1.1-7l10.3,0.6c0.1,0.5,0.1,1.1,0.1,1.9c0,4.9-1.3,8.6-4,11s-6.5,3.6-11.4,3.6c-5.9,0-10-1.9-12.4-5.6    c-2.4-3.7-3.6-9.4-3.6-17.2v-9.3c0-8,1.2-13.8,3.7-17.5c2.5-3.7,6.7-5.5,12.6-5.5c4.1,0,7.3,0.8,9.5,2.3c2.2,1.5,3.7,3.9,4.6,7    c0.9,3.2,1.3,7.6,1.3,13.2v9.1H445.4z M446.9,118.9c-0.6,0.8-1,2-1.2,3.7c-0.2,1.7-0.3,4.3-0.3,7.8v3.8h8.8v-3.8    c0-3.4-0.1-6-0.3-7.8c-0.2-1.8-0.7-3-1.3-3.7c-0.6-0.7-1.6-1.1-2.8-1.1C448.5,117.8,447.5,118.2,446.9,118.9z" />
+                                <path class="st2"
+                                    d="M231.7,140.3l-13.6-49.3H230l4.8,22.3c1.2,5.5,2.1,10.2,2.7,14.1h0.3c0.4-2.8,1.3-7.4,2.7-14l5-22.4h11.9    l-13.8,49.3V164h-11.8V140.3z" />
+                                <path class="st2"
+                                    d="M326.1,110.7V164h-9.4l-1-6.5h-0.3c-2.5,4.9-6.4,7.4-11.5,7.4c-3.5,0-6.1-1.2-7.8-3.5    c-1.7-2.3-2.5-5.9-2.5-10.9v-39.8h12v39.1c0,2.4,0.3,4.1,0.8,5.1c0.5,1,1.4,1.5,2.6,1.5c1,0,2-0.3,3-1c1-0.6,1.7-1.4,2.1-2.4    v-42.3H326.1z" />
+                                <path class="st2"
+                                    d="M387.6,110.7V164h-9.4l-1-6.5h-0.3c-2.5,4.9-6.4,7.4-11.5,7.4c-3.5,0-6.1-1.2-7.8-3.5    c-1.7-2.3-2.5-5.9-2.5-10.9v-39.8h12v39.1c0,2.4,0.3,4.1,0.8,5.1c0.5,1,1.4,1.5,2.6,1.5c1,0,2-0.3,3-1c1-0.6,1.7-1.4,2.1-2.4    v-42.3H387.6z" />
+                                <path class="st2" d="M358.7,100.7h-11.9V164h-11.7v-63.2h-11.9v-9.6h35.5V100.7z" />
+                                <path class="st2"
+                                    d="M427.3,119.2c-0.7-3.4-1.9-5.8-3.5-7.3c-1.6-1.5-3.9-2.3-6.7-2.3c-2.2,0-4.3,0.6-6.2,1.9    c-1.9,1.2-3.4,2.9-4.4,4.9h-0.1l0-28.1h-11.6V164h9.9l1.2-5h0.3c0.9,1.8,2.3,3.2,4.2,4.3c1.9,1,3.9,1.6,6.2,1.6    c4.1,0,7-1.9,8.9-5.6c1.9-3.7,2.9-9.6,2.9-17.5v-8.4C428.4,127.2,428,122.6,427.3,119.2z M416.3,140.9c0,3.9-0.2,6.9-0.5,9.1    c-0.3,2.2-0.9,3.8-1.6,4.7c-0.8,0.9-1.8,1.4-3,1.4c-1,0-1.9-0.2-2.7-0.7c-0.8-0.5-1.5-1.2-2-2.1v-30.2c0.4-1.4,1.1-2.6,2.1-3.6    c1-0.9,2.1-1.4,3.2-1.4c1.2,0,2.2,0.5,2.8,1.4c0.7,1,1.1,2.6,1.4,4.8c0.3,2.3,0.4,5.5,0.4,9.6V140.9z" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div id="netflix" class="platform">
+                    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                    <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2"
+                        xml:space="preserve" width="576" height="154.57333" viewBox="0 0 576 154.57333"
+                        sodipodi:docname="netflix-seeklogo.com.eps">
+                        <metadata id="metadata8">
+                            <rdf:RDF>
+                                <cc:Work rdf:about="">
+                                    <dc:format>image/svg+xml</dc:format>
+                                    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                                </cc:Work>
+                            </rdf:RDF>
+                        </metadata>
+                        <defs id="defs6" />
+                        <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1"
+                            objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0"
+                            inkscape:pageshadow="2" inkscape:window-width="640" inkscape:window-height="480"
+                            id="namedview4" />
+                        <g id="g10" inkscape:groupmode="layer" inkscape:label="ink_ext_XXXXXX"
+                            transform="matrix(1.3333333,0,0,-1.3333333,0,154.57333)">
+                            <g id="g12" transform="scale(0.1)">
+                                <path
+                                    d="m 592.336,1159.32 c -59.238,0 -122.629,0 -181.867,0 -0.352,-247.297 -0.703,-407.472 -1.051,-654.765 -78.145,241.328 -156.371,401.093 -234.789,654.765 -66.504,0 -108.1212,0 -174.629,0 C 0,772.883 0,386.438 0,0 c 58.9453,8.39063 122.07,16.4297 181.086,24.1289 0.164,242.3091 0.336,391.2661 0.5,633.5821 81.211,-238.508 131.141,-379.191 212.109,-605.8516 63.477,7.25 133.215,16.1719 196.754,22.6211 0.629,361.6095 1.254,723.2305 1.887,1084.8395"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path14" />
+                                <path
+                                    d="m 1271.63,1159.32 c -168.63,0 -335.181,0 -503.81,0 -0.675,-356.523 -1.355,-713.047 -2.035,-1069.57 168.528,15.328 337.245,27.859 506.085,37.59 0.09,52.125 0.19,127.058 0.28,179.176 -109.79,-6.746 -214.82,-13.778 -324.224,-21.133 0.187,95.851 0.379,175.121 0.566,270.976 79.958,1.379 164.408,0.168 246.088,1.567 0.09,52.39 0.19,127.594 0.29,179.988 -80.94,-1.437 -166.42,-1.601 -246.061,-3.113 0.191,95.855 0.375,148.433 0.566,244.293 50.102,0.605 99.205,0.683 148.215,0.683 8.61,0 17.21,0 25.82,-0.007 8.56,0 17.12,0 25.69,0 40.88,0 81.93,0.046 123.67,0.41 0.1,52.13 -1.23,127.02 -1.14,179.14"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path16" />
+                                <path
+                                    d="m 1950.71,1158.52 c -184.92,0 -376.07,-0.01 -560.99,-0.02 -0.09,-51.79 -0.17,-126.39 -0.26,-178.176 8.05,0.059 16.1,0.078 24.14,0.078 24.37,0 48.74,-0.23 73.12,-0.476 24.35,-0.235 48.7,-0.481 73.06,-0.481 6.25,0 12.49,0.02 18.74,0.051 -0.38,-287.422 -0.76,-549.949 -1.13,-837.375 59.36,2.207 122.87,4.07 182.24,5.578 0.27,285.852 0.54,546.809 0.8,832.645 62.71,0.246 127.5,0.429 190.21,0.558 0.02,50.908 0.05,126.708 0.07,177.618"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path18" />
+                                <path
+                                    d="m 2574.62,1159.32 c -168.63,0 -337.26,0 -505.88,0 -0.05,-335.586 -0.1,-671.164 -0.15,-1006.742 19.55,0.082 39.33,0.113 59.19,0.113 40.45,0 81.21,-0.152 121.05,-0.461 -0.05,142.411 -0.09,272.383 -0.13,414.805 9.93,-0.039 19.96,-0.058 30.06,-0.058 23.52,0 47.42,0.097 71.42,0.195 24,0.098 48.1,0.195 71.99,0.195 24.62,0 49.01,-0.097 72.86,-0.429 -0.04,51.054 -0.09,127 -0.14,178.054 -22.52,0.227 -45.53,0.305 -68.77,0.305 -24.9,0 -50.05,-0.086 -75.1,-0.176 -25.02,-0.09 -49.95,-0.176 -74.44,-0.176 -9.37,0 -18.69,0.008 -27.93,0.039 -0.03,91.551 -0.05,143.223 -0.08,234.786 19.78,-0.032 39.51,-0.04 59.17,-0.04 19.96,0 39.86,0.008 59.75,0.02 20.06,0.008 40.11,0.02 60.17,0.02 48.87,0 97.78,-0.051 147.12,-0.274 -0.05,51.174 -0.11,128.654 -0.16,179.824"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path20" />
+                                <path
+                                    d="m 2692.7,1158.51 c 0.44,-338.819 -1.19,-677.639 -0.75,-1016.471 161.74,-6.019 331.7,-12.551 493.24,-23.719 -0.1,52.121 -0.2,127.075 -0.3,179.192 -102.24,6.015 -208.68,13.222 -311,17.48 -0.46,290.168 1.14,553.352 0.68,843.508 -59.25,0.01 -122.63,0.01 -181.87,0.01"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path22" />
+                                <path
+                                    d="m 3334.44,1158.48 c 0.7,-350.39 1.38,-700.781 2.07,-1051.179 59.26,-4.582 120.57,-9.4924 179.78,-14.7619 0.21,355.0699 0.7,710.6169 0.02,1065.9309 -59.24,0.01 -122.63,0.01 -181.87,0.01"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path24" />
+                                <path
+                                    d="M 3672.22,1158.46 C 3744.95,981.293 3811.48,803.617 3885.34,615.473 3808.58,434.75 3730.45,255.219 3653.77,81.8594 3717.29,75.5898 3783,66.4219 3846.46,59.3516 3891.99,171 3933.41,256.945 3978.98,371.613 4024.48,249.465 4065.84,155.102 4111.22,29.0195 4174.58,20.8008 4256.72,9.01172 4320,0 c -76.71,205.063 -160.61,418.578 -237.74,612.379 76.81,182 155.19,355.738 234.98,546.021 -65.51,0 -133.09,0.01 -198.6,0.02 -49.24,-117.61 -83.11,-193.182 -130.31,-305.135 -43.97,116.485 -73.47,191.865 -117.51,305.155 -65.51,0.01 -133.1,0.01 -198.6,0.02"
+                                    style="fill:#ec2223;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path26" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- MEDIA BUTTONS -->
+            <div class="media-wrapper">
+                <div id="play" class="material-icons standard-btn">play_arrow</div>
+                <div id="next" class="material-icons standard-btn">skip_next</div>
+                <div id="fullscreen" class="material-icons standard-btn">fullscreen</div>
+                <div id="fullscreen_exit" class="material-icons standard-btn">fullscreen_exit</div>
+            </div>
+
+            <!-- EXTRA BUTTONS -->
+            <div class="extras-wrapper">
+                <div id="voice_search" class="material-icons standard-btn">mic</div>
+                <div id="keyboard" class="material-icons standard-btn">keyboard</div>
+                <div id="go_back" class="material-icons standard-btn">keyboard_backspace</div>
+            </div>
+
+            <!-- MAIN NAVIGATION RING -->
+            <div class="ring">
+                <span class="material-icons nav-btn"></span>
+                <span id="top" class="material-icons nav-btn">expand_less</span>
+                <span class="material-icons nav-btn"></span>
+                <span id="left" class="material-icons nav-btn">chevron_left</span>
+                <span id="center" class="material-icons nav-btn">adjust</span>
+                <span id="right" class="material-icons nav-btn">chevron_right</span>
+                <span class="material-icons nav-btn"></span>
+                <span id="bottom" class="material-icons nav-btn">expand_more</span>
+                <span class="material-icons nav-btn"></span>
+            </div>
+        </div>
+    </main>
+    <script>
+        let remote_body = document.getElementsByTagName("body")[0]
+
+        // PLATFORM BUTTONS
+        let youtube = document.getElementById("youtube");
+        let netflix = document.getElementById("netflix");
+
+        // MEDIA BUTTONS
+        let play_pause_btn = document.getElementById("play");
+        let next_btn = document.getElementById("next");
+
+        // EXTRA BUTTONS
+        let voice_search = document.getElementById("voice_search");;
+        let keyboard = document.getElementById("keyboard");
+        let go_back = document.getElementById("go_back");
+        let fullscreen_btn = document.getElementById("fullscreen");
+        let fullscreen_exit_btn = document.getElementById("fullscreen_exit");
+
+        // MAIN NAVIGATION BUTTONS
+        let top_btn = document.getElementById("top");
+        let left_btn = document.getElementById("left");
+        let center_btn = document.getElementById("center");
+        let right_btn = document.getElementById("right");
+        let bottom_btn = document.getElementById("bottom");
+
+
+        // REMOTE ACTIONS
+        function openFullscreen(elem) {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function press(button) {
+            const url = document.URL + button;
+
+            fetch(url).then(
+                console.log(url)
+            )
+        }
+
+
+        // BUTTON SPECIFIC ACTIONS
+        let vibrate_duration = 50
+
+
+        // PLATFORM BUTTONS
+        youtube.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("youtube_btn")
+        }
+
+        netflix.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("netflix_btn")
+        }
+
+
+        // MEDIA BUTTONS
+        play_pause_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("play_pause_btn")
+            if (play_pause_btn.innerHTML == "play_arrow") {
+                play_pause_btn.innerHTML = "pause"
+            }
+            else {
+                play_pause_btn.innerHTML = "play_arrow"
+            }
+        }
+
+        next_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("next_btn")
+        }
+
+        fullscreen_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            openFullscreen(remote_body);
+        }
+
+        fullscreen_exit_btn.onclick = function () {
+            document.exitFullscreen().then(
+                navigator.vibrate(vibrate_duration)
+            )
+        }
+
+
+        // EXTRA BUTTONS
+        voice_search.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+        }
+
+        keyboard.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+        }
+
+        go_back.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("go_back")
+        }
+
+
+        // NAVIGATION BUTTONS
+
+        top_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("top_btn")
+        }
+
+        left_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("left_btn")
+        }
+
+        center_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("center_btn")
+        }
+
+        right_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("right_btn")
+        }
+
+        bottom_btn.onclick = function () {
+            navigator.vibrate(vibrate_duration);
+            press("bottom_btn")
+        }
+    </script>
+</body>
+
+</html>
